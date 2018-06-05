@@ -5,18 +5,21 @@ public class Candidate {
 
     private String name;
     int electoralVotesEarned;
-    ArrayList<String> statesEarned;
+    ArrayList<String> statesAbbreviationsEarned;
+    private ArrayList<States> statesEarned;
     private String politicalParty;
 
     public Candidate(String name, String politicalParty){
         this.name = name;
         this.electoralVotesEarned = 0;
         this.politicalParty = politicalParty;
-        this.statesEarned = new ArrayList<String>();
+        this.statesAbbreviationsEarned = new ArrayList<String>();
+        statesEarned = new ArrayList<States>();
     }
 
-    public void stateWon(String e, int number){
-        this.statesEarned.add(e);
+    public void stateWon(States state, String e, int number){
+        this.statesAbbreviationsEarned.add(e);
+        statesEarned.add(state);
 
         if (electoralVotesEarned <= ELECTORALTOTAL) {
             this.electoralVotesEarned += number;
@@ -38,6 +41,6 @@ public class Candidate {
     }
 
     public ArrayList<String> statesCandidateEarned(){
-        return this.statesEarned;
+        return this.statesAbbreviationsEarned;
     }
 }
