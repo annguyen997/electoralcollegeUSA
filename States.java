@@ -5,11 +5,13 @@ public class States {
 
     private int electoral_Votes;
     private String state;
+    private String stateAbbreviation;
 
-    public States(String state, int electoral_Votes){
+    public States(String state, int electoral_Votes, String stateAbbreivation){
         if (StatesAdded <= States.NUMBEROFSTATES) {
             this.state = state;
             this.electoral_Votes = electoral_Votes;
+            this.stateAbbreviation = stateAbbreivation;
             States.StatesAdded++;
         } else {
             System.out.println("There are no more states in the United States, and thus you cannot create another object of such state.");
@@ -24,7 +26,11 @@ public class States {
         return this.state;
     }
 
+    public String getStateAbbreviation(){
+        return this.stateAbbreviation;
+    }
+
     public String toString(){
-        return this.state + ", " + this.electoral_Votes;
+        return this.state + "( " + this.stateAbbreviation + "): " + this.electoral_Votes;
     }
 }
